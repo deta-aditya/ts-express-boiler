@@ -1,4 +1,5 @@
-import { RouteHandler, Response, Controller, Request, send } from "../utilities/Routing"
+import { Response, Controller, Request, send } from "../utilities/Routing"
+import { RouteHandler } from "../utilities/RouteHandler"
 
 const users = [
   { name: 'Deta', birthdate: '1997-09-17', country: 'Indonesia' },
