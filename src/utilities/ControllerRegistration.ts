@@ -1,8 +1,9 @@
 import controllers from "../controllers"
-import { ResponseContext, Controller } from "./Routing";
+import { Controller } from "./Routing";
 import { isNil } from "ramda";
 import { Router, RequestHandler, Application } from "express";
 import { RouteHandlerSignature, RouteHandlerPayload, getRouteHandlerPayload } from "./RouteHandler";
+import { ResponseContext } from "./Response";
 
 interface RouteHandlerReflectionContext {
   method: RouteHandlerSignature

@@ -1,4 +1,6 @@
-import { HttpMethod, send, json, isResponseContext, Response, Request, Controller } from "./Routing"
+import { HttpMethod, Request, Controller } from "./Routing"
+import { Response, isResponseContext, Respond } from "./Response"
+import "reflect-metadata"
 
 export const RouteHandlerKey = Symbol('RouteHandler')
 
@@ -24,11 +26,11 @@ export function RouteHandler(payload: RouteHandlerPayload): MethodDecorator {
 
       return (function wrapResponse(response: Response): Response {
         if (typeof response === 'string') {
-          return wrapResponse(send(response))
+          return wrapResponse(Respond.send(response))
         } else if (Array.isArray(response)) {
-          return wrapResponse(json(response))
+          return wrapResponse(Respond.json(response))
         } else if (response.constructor === Object && !isResponseContext(response)) {
-          return wrapResponse(json(response))
+          return wrapResponse(Respond.json(response))
         } else {
           return response
         }
